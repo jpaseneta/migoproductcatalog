@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="nav_drawer_icons">
+        <item>@drawable/all</item>
+        <item>@drawable/music</item>
+        <item>@drawable/books</item>
+        <item>@drawable/movies</item>
+    </array>
+</resources>

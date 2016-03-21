@@ -1,0 +1,178 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.v15.migoproductcatalog.Fragments.CollectionViewFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:id="@+id/filterlayout">
+        <TextView
+            android:id="@+id/filterbylabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter by:"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"/>
+        <CheckBox
+            android:id="@+id/checkboxfilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/collection_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+
+        <!-- Your FAB implementation -->
+        <com.example.v15.migoproductcatalog.Animations.CustomFab
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/fab"
+            app:layout_anchor="@id/collection_recyclerview"
+            app:layout_anchorGravity="bottom|right|end"
+            app:layout_behavior="com.example.v15.migoproductcatalog.Animations.ScrollFABBehavior"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@android:drawable/ic_input_add"/>
+
+
+        <!-- Overlay that dims the screen -->
+        <com.gordonwong.materialsheetfab.DimOverlayFrameLayout
+            android:id="@+id/dim_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Circular reveal container for the sheet -->
+        <io.codetail.widget.RevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end|bottom"
+            android:orientation="vertical">
+
+            <!-- Sheet that contains your items -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/fab_sheet"
+                android:layout_width="300dp"
+                android:layout_height="400dp">
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/add_product_form"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add New Product"
+                            android:gravity="left"
+                            android:textStyle="bold"
+                            android:textSize="16sp"/>
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/producttitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Title"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+                        </android.support.design.widget.TextInputLayout>
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/mediatypeSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            />
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/genreSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/productotherinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+
+
+                        </android.support.design.widget.TextInputLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <Button
+                                android:id="@+id/uploadimage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/CustomButton"
+                                android:text="Upload"
+                                android:drawableLeft="@android:drawable/stat_sys_upload_done"
+                                />
+                            <TextView
+                                android:id="@+id/fileLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+                        <Button
+                            android:id="@+id/addproduct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:layout_gravity="center"
+                            style="@style/CustomButton"
+                            android:text="Add Media Product"
+                            android:drawableLeft="@drawable/ic_perm_media_white_24dp"
+                            />
+                    </LinearLayout>
+                </ScrollView>
+
+
+            </android.support.v7.widget.CardView>
+        </io.codetail.widget.RevealLinearLayout>
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/fab"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_anchor="@id/collection_recyclerview"-->
+            <!--app:layout_anchorGravity="bottom|right|end"-->
+            <!--app:layout_behavior="com.example.v15.migoproductcatalog.Animations.ScrollFABBehavior"-->
+            <!--android:layout_margin="@dimen/fab_margin"-->
+            <!--android:src="@android:drawable/ic_input_add"-->
+            <!--/>-->
+    </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
